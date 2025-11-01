@@ -4,6 +4,7 @@ import Button2 from "./Button2";
 export default function Navbar() {
   return (
     <nav
+      style={{ ["--nav-height" as any]: "72px" }}
       className="
         fixed top-0 left-0 w-full z-50
         flex items-center justify-between

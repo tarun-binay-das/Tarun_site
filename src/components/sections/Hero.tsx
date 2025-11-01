@@ -1,13 +1,14 @@
-import BackgroundRipple from "./BackgroundRipple";
+import BackgroundRipple from "../BackgroundRipple";
+
 
 export default function Hero() {
   return (
     <section
       id="home"
-      className="relative h-screen w-full flex flex-col justify-center overflow-hidden bg-[#191919] text-white px-12 md:px-24"
+      className="relative h-screen w-full flex flex-col justify-center overflow-hidden  text-white px-12 md:px-24"
     >
       {/* Ripple background */}
-      <BackgroundRipple cellSize={50} />
+      
 
       {/* Content container */}
       <div className="relative z-10 flex flex-col gap-10">

@@ -1,22 +1,22 @@
 "use client";
-import React, { useMemo, useState, useEffect, useRef } from "react";
+import React, { useMemo, useRef, useState, useEffect } from "react";
 import { cn } from "../lib/utils";
 
-/**
- * Full Aceternity-like Interactive Background Grid
- * - Smooth ripple waves
- * - Hover-based glow field
- * - Multi-ripple support
- */
-const BackgroundRipple: React.FC<{ cellSize?: number }> = ({ cellSize = 56 }) => {
+export default function BackgroundRipple({
+  cellSize = 56,
+}: {
+  cellSize?: number;
+}) {
   const [gridSize, setGridSize] = useState({ rows: 0, cols: 0 });
-  const [ripples, setRipples] = useState<{ row: number; col: number; id: number }[]>([]);
-  const [hoverCell, setHoverCell] = useState<{ row: number; col: number } | null>(null);
-  const rippleId = useRef(0);
+  const [clickedCell, setClickedCell] = useState<{ row: number; col: number } | null>(
+    null
+  );
+  const [rippleKey, setRippleKey] = useState(0);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
-  // Adjust grid dynamically to viewport
+  // Dynamically adjust grid size to viewport
   useEffect(() => {
-    const resizeGrid = () => {
+    const resize = () => {
       const w = window.innerWidth;
       const h = window.innerHeight;
       setGridSize({
@@ -24,71 +24,60 @@ const BackgroundRipple: React.FC<{ cellSize?: number }> = ({ cellSize = 56 }) =>
         rows: Math.ceil(h / cellSize),
       });
     };
-    resizeGrid();
-    window.addEventListener("resize", resizeGrid);
-    return () => window.removeEventListener("resize", resizeGrid);
+    resize();
+    window.addEventListener("resize", resize);
+    return () => window.removeEventListener("resize", resize);
   }, [cellSize]);
-
-  const handleClick = (row: number, col: number) => {
-    const id = rippleId.current++;
-    setRipples((prev) => [...prev, { row, col, id }]);
-    setTimeout(() => {
-      setRipples((prev) => prev.filter((r) => r.id !== id));
-    }, 1500);
-  };
 
   return (
     <div
+      ref={containerRef}
       className={cn(
-        "absolute inset-0 h-full w-full",
-        "[--cell-border-color:rgba(255,255,255,0.07)] [--cell-fill-color:rgba(255,255,255,0.02)]"
+        "absolute inset-0 h-full w-full overflow-hidden pointer-events-auto",
+        "bg-[radial-gradient(circle_at_top_right,_rgba(255,255,255,0.06)_0%,_rgba(255,255,255,0.015)_60%,_transparent_100%)]",
+        "[--cell-border:rgba(255,255,255,0.07)] [--cell-fill:rgba(255,255,255,0.015)]"
       )}
     >
-      {gridSize.rows > 0 && gridSize.cols > 0 && (
-        <DivGrid
-          rows={gridSize.rows}
-          cols={gridSize.cols}
-          cellSize={cellSize}
-          borderColor="var(--cell-border-color)"
-          fillColor="var(--cell-fill-color)"
-          ripples={ripples}
-          hoverCell={hoverCell}
-          onCellHover={setHoverCell}
-          onCellClick={handleClick}
-          interactive
-        />
-      )}
+      <GridRipple
+        key={rippleKey}
+        rows={gridSize.rows}
+        cols={gridSize.cols}
+        cellSize={cellSize}
+        borderColor="var(--cell-border)"
+        fillColor="var(--cell-fill)"
+        clickedCell={clickedCell}
+        onCellClick={(r, c) => {
+          setClickedCell({ row: r, col: c });
+          setRippleKey((k) => k + 1);
+        }}
+      />
     </div>
   );
-};
+}
 
-export default BackgroundRipple;
-
-type DivGridProps = {
+type GridRippleProps = {
   rows: number;
   cols: number;
   cellSize: number;
   borderColor: string;
   fillColor: string;
-  ripples: { row: number; col: number; id: number }[];
-  hoverCell: { row: number; col: number } | null;
+  clickedCell: { row: number; col: number } | null;
   onCellClick?: (row: number, col: number) => void;
-  onCellHover?: (hover: { row: number; col: number } | null) => void;
-  interactive?: boolean;
 };
 
-const DivGrid: React.FC<DivGridProps> = ({
+function GridRipple({
   rows,
   cols,
   cellSize,
   borderColor,
   fillColor,
-  ripples,
-  hoverCell,
+  clickedCell,
   onCellClick = () => {},
-  onCellHover = () => {},
-  interactive = true,
-}) => {
+}: GridRippleProps) {
+  const [hoverCell, setHoverCell] = useState<{ row: number; col: number } | null>(
+    null
+  );
+
   const cells = useMemo(() => Array.from({ length: rows * cols }, (_, i) => i), [rows, cols]);
 
   const gridStyle: React.CSSProperties = {
@@ -100,45 +89,45 @@ const DivGrid: React.FC<DivGridProps> = ({
   };
 
   return (
-    <div className="absolute inset-0" style={gridStyle}>
+    <div className="absolute inset-0 z-[1]" style={gridStyle}>
       {cells.map((idx) => {
         const rowIdx = Math.floor(idx / cols);
         const colIdx = idx % cols;
+        const distance = clickedCell
+          ? Math.hypot(clickedCell.row - rowIdx, clickedCell.col - colIdx)
+          : 0;
 
-        const distanceFromHover =
-          hoverCell !== null ? Math.hypot(hoverCell.row - rowIdx, hoverCell.col - colIdx) : 999;
+        const delay = clickedCell ? distance * 45 : 0; // ms
+        const duration = 600 + distance * 70; // ms
 
-        // glow near cursor
-        const hoverIntensity = Math.max(0, 1 - distanceFromHover / 6);
-        const hoverOpacity = hoverIntensity * 0.25;
+        const style: React.CSSProperties = clickedCell
+          ? {
+              "--delay": `${delay}ms`,
+              "--duration": `${duration}ms`,
+            } as React.CSSProperties
+          : {};
 
-        const isClicked =
-          ripples.findIndex((r) => r.row === rowIdx && r.col === colIdx) !== -1;
-
-        const style: React.CSSProperties = {
-          backgroundColor: fillColor,
-          borderColor,
-          opacity: 0.4 + hoverOpacity,
-          boxShadow: hoverOpacity
-            ? `0 0 ${8 * hoverIntensity}px rgba(255,255,255,${hoverOpacity}) inset`
-            : undefined,
-        };
+        // Is this cell being hovered?
+        const isHovered =
+          hoverCell?.row === rowIdx && hoverCell?.col === colIdx;
 
         return (
           <div
             key={idx}
             className={cn(
-              "grid-cell relative border-[0.5px] transition-all duration-200 will-change-transform",
-              isClicked && "animate-cell-ripple",
-              !interactive && "pointer-events-none"
+              "border-[0.5px] transition-all duration-200 ease-[cubic-bezier(0.25,1,0.5,1)] will-change-transform",
+              "bg-[var(--cell-fill)] border-[var(--cell-border)]",
+              "opacity-[0.4]",
+              isHovered && "bg-[rgba(255,255,255,0.1)] opacity-80 shadow-[0_0_8px_rgba(255,255,255,0.15)_inset]",
+              clickedCell && "animate-cell-ripple"
             )}
             style={style}
-            onMouseEnter={() => onCellHover({ row: rowIdx, col: colIdx })}
-            onMouseLeave={() => onCellHover(null)}
-            onClick={interactive ? () => onCellClick(rowIdx, colIdx) : undefined}
+            onClick={() => onCellClick(rowIdx, colIdx)}
+            onMouseEnter={() => setHoverCell({ row: rowIdx, col: colIdx })}
+            onMouseLeave={() => setHoverCell(null)}
           />
         );
       })}
     </div>
   );
-};
+}
