@@ -2,6 +2,7 @@ import Navbar from "./components/Navbar";
 import BackgroundRipple from "./components/BackgroundRipple";
 
 import Hero from "./components/sections/Hero";
+import ResponsiveHero from "./components/sections/ResponsiveHero";
 import About from "./components/sections/About";
 import Quote from "./components/sections/Quote";
 import Skills from "./components/sections/Skills";
@@ -38,7 +39,7 @@ export default function App() {
 
       {/* Hero starts normally below navbar */}
       <section id="hero" className="relative z-10 pt-24">
-        <Hero />
+        <ResponsiveHero />
       </section>
 
       {/* === Rest of the site === */}

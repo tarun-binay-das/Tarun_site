@@ -7,9 +7,17 @@ interface ButtonProps {
   text: string;
   href?: string;
   className?: string;
+  initialRotation?: number; // starting arrow rotation
+  hoverRotation?: number;   // how much it rotates on hover
 }
 
-export default function Button({ text, href = "#", className }: ButtonProps) {
+export default function Button({
+  text,
+  href = "#",
+  className,
+  initialRotation = 0,
+  hoverRotation = 45,
+}: ButtonProps) {
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -27,12 +35,11 @@ export default function Button({ text, href = "#", className }: ButtonProps) {
       whileHover={{ opacity: 0.9, scale: 1.02 }}
       transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
     >
-      {/* Text content */}
       <span>{text}</span>
 
-      {/* Arrow (rotates on hover) */}
+      {/* Arrow Icon */}
       <motion.span
-        animate={{ rotate: hovered ? 45 : 0 }}
+        animate={{ rotate: hovered ? hoverRotation : initialRotation }}
         transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
         className="inline-block"
       >
