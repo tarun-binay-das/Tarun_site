@@ -3,7 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import { cn } from "../lib/utils";
 import { useState } from "react";
 
-interface ButtonProps {
+interface ButtonArrowProps {
   text: string;
   href?: string;
   className?: string;
@@ -11,13 +11,13 @@ interface ButtonProps {
   hoverRotation?: number;   // how much it rotates on hover
 }
 
-export default function Button({
+export default function ButtonArrow({
   text,
   href = "#",
   className,
   initialRotation = 0,
   hoverRotation = 45,
-}: ButtonProps) {
+}: ButtonArrowProps) {
   const [hovered, setHovered] = useState(false);
 
   return (

@@ -1,5 +1,5 @@
-import Button from "./Button";
-import Button2 from "./Button2";
+import ButtonArrow from "./Button_Arrow";
+import ButtonBrackets from "./Button_Brackets";
 
 export default function Navbar() {
   return (
@@ -28,15 +28,15 @@ export default function Navbar() {
           text-[0.7rem] lg:text-[0.85rem] font-mono uppercase tracking-[0.15em]
         "
       >
-        <Button2 text="Home" href="#home" />
-        <Button2 text="About" href="#about" />
-        <Button2 text="Works" href="#works" />
-        <Button2 text="Services" href="#services" />
+        <ButtonBrackets text="Home" href="#home" />
+        <ButtonBrackets text="About" href="#about" />
+        <ButtonBrackets text="Works" href="#works" />
+        <ButtonBrackets text="Services" href="#services" />
       </div>
 
       {/* Right: Contact Button */}
       <div className="flex items-center">
-        <Button text="Contact Me" href="#contact" />
+        <ButtonArrow text="Contact Me" href="#contact" />
       </div>
     </nav>
   );

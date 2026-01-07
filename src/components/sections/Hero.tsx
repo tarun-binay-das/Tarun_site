@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform, cubicBezier } from "framer-motion";
 import { useRef } from "react";
 import SpinningIcon from "../SpinningIcon";
-import Button from "../Button";
+import ButtonArrow from "../Button_Arrow";
 
 export default function Hero() {
   const ref = useRef(null);
@@ -84,8 +84,8 @@ export default function Hero() {
           <div className="uppercase tracking-widest text-gray-400 text-[1.1rem] font-semibold">
             available for collaboration
           </div>
-          <Button
-            className="text-white text-[1.35rem] md:text-[1.5rem] font-semibold"
+          <ButtonArrow
+            className="text-white text-[1.35rem] md:text-[1.5rem] font-regular"
             text="tarunbinaydas@gmail.com"
             href="mailto:tarunbinaydas@gmail.com"
             initialRotation={90}
@@ -123,8 +123,8 @@ export default function Hero() {
         <p className="absolute right-[0%] top-[-34px] uppercase tracking-widest mb-2 text-gray-400 text-[1.1rem] font-semibold">
           recent works
         </p>
-        <Button
-          className="text-white text-[1.3rem] md:text-[1.45rem] font-semibold"
+        <ButtonArrow
+          className="text-white text-[1.3rem] md:text-[1.45rem] font-regular"
           text="TRUETXT – Messaging App"
           href="#projects"
           initialRotation={90}

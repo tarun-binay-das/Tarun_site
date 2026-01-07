@@ -1,12 +1,12 @@
 import { cn } from "../lib/utils";
 
-interface Button2Props {
+interface ButtonBracketsProps {
   text: string;
   href?: string;
   className?: string;
 }
 
-export default function Button2({ text, href = "#", className }: Button2Props) {
+export default function ButtonBrackets({ text, href = "#", className }: ButtonBracketsProps) {
   return (
     <a
       href={href}
