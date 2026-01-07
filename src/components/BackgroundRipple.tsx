@@ -34,8 +34,8 @@ export default function BackgroundRipple({
       ref={containerRef}
       className={cn(
         "absolute inset-0 h-full w-full overflow-hidden pointer-events-auto",
-        "bg-[radial-gradient(circle_at_top_right,_rgba(255,255,255,0.06)_0%,_rgba(255,255,255,0.015)_60%,_transparent_100%)]",
-        "[--cell-border:rgba(255,255,255,0.07)] [--cell-fill:rgba(255,255,255,0.015)]"
+        "bg-[radial-gradient(circle_at_top_right,_rgba(255,255,255,0.08)_0%,_rgba(255,255,255,0.02)_60%,_transparent_100%)]",
+        "[--cell-border:rgba(255,255,255,0.12)] [--cell-fill:rgba(255,255,255,0.03)]"
       )}
     >
       <GridRipple
@@ -115,10 +115,10 @@ function GridRipple({
           <div
             key={idx}
             className={cn(
-              "border-[0.5px] transition-all duration-200 ease-[cubic-bezier(0.25,1,0.5,1)] will-change-transform",
+              "border-[0.5px] transition-all duration-200 ease-[cubic-bezier(0.25,1,0.5,1)] will-change-transform cursor-pointer",
               "bg-[var(--cell-fill)] border-[var(--cell-border)]",
-              "opacity-[0.4]",
-              isHovered && "bg-[rgba(255,255,255,0.1)] opacity-80 shadow-[0_0_8px_rgba(255,255,255,0.15)_inset]",
+              "opacity-55",
+              isHovered && "bg-[rgba(255,255,255,0.18)] opacity-100 shadow-[0_0_14px_rgba(255,255,255,0.25)_inset]",
               clickedCell && "animate-cell-ripple"
             )}
             style={style}

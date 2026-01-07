@@ -198,6 +198,29 @@ h4 {
 }
 
 /* Grid & fade live on ::before so mask only affects the grid layer */
+
+/* === Cell Ripple Animation === */
+@keyframes cell-ripple {
+  0% {
+    background-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.2) inset;
+    opacity: 1;
+  }
+  50% {
+    background-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3) inset;
+    opacity: 1;
+  }
+  100% {
+    background-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.05) inset;
+    opacity: 0.4;
+  }
+}
+
+.animate-cell-ripple {
+  animation: cell-ripple var(--duration, 600ms) ease-out var(--delay, 0ms) forwards;
+}
 .bg-ripple-root::before {
   content: "";
   position: absolute;

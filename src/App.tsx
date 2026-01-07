@@ -13,13 +13,13 @@ import Contact from "./components/sections/Contact";
 
 export default function App() {
   return (
-    <main className="relative bg-[#050505] text-white overflow-x-hidden">
-      {/* === Ripple background visible behind Navbar and top-half of Hero === */}
+    <main className="relative bg-[#050505] text-white overflow-x-visible">
+      {/* === Ripple background visible behind Navbar and full Hero === */}
       <div
         className="absolute top-0 left-0 w-full z-0 pointer-events-auto"
         style={{
-          /* cover navbar + half of viewport (hero's half) */
-          height: "calc(50vh + var(--nav-height, 72px))",
+          /* cover navbar + full viewport height */
+          height: "100vh",
         }}
       >
         {/* BackgroundRipple handles clicks inside this area */}
@@ -38,7 +38,7 @@ export default function App() {
       <Navbar />
 
       {/* Hero starts normally below navbar */}
-      <section id="hero" className="relative z-10 pt-24">
+      <section id="hero" className="relative z-10 pt-24 pointer-events-none">
         <ResponsiveHero />
       </section>
 

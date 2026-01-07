@@ -70,12 +70,12 @@ export default function DesignCanvas({
     height: `${height}px`,
     transformOrigin: "center center",
     transform: `translate(-50%, -50%) scale(${scale})`,
-    pointerEvents: "auto",
+    pointerEvents: "none",
     overflow: "visible",
   };
 
   return (
-    <div style={{ position: "relative", width: "100%", height: "100vh", overflow: "hidden" }}>
+    <div style={{ position: "relative", width: "100%", height: "100vh", overflow: "visible", pointerEvents: "none" }}>
       <div ref={ref} style={wrapperStyle} aria-hidden={false}>
         {children}
       </div>
