@@ -41,7 +41,7 @@ export default function App() {
       </section>
 
       {/* === Rest of the site === */}
-      <section id="about" className="relative z-10 -translate-y-[460px]">
+      <section id="about" className="relative z-10 -mt-16">
         <About />
       </section>
 

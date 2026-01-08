@@ -28,30 +28,46 @@ export default function HorizontalScroller({
     if (!container || !track) return;
 
     const ctx = gsap.context(() => {
-      const refresh = () => ScrollTrigger.refresh();
-
-      // Horizontal scroll driven by the track's actual width
-      const horizTween = gsap.to(track, {
-        x: () => -(track.scrollWidth - container.clientWidth),
-        ease: "none",
-        scrollTrigger: {
-          trigger: container,
-          start: "top top",
-          end: () => "+=" + Math.max(0, track.scrollWidth - container.clientWidth),
-          scrub: 1,
-          pin: true,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-        },
-      });
-
-      window.addEventListener("resize", refresh);
-
-      return () => {
-        window.removeEventListener("resize", refresh);
-        horizTween.scrollTrigger?.kill();
-        horizTween.kill();
+      const refresh = () => {
+        ScrollTrigger.refresh();
       };
+
+      // Wait for layout to stabilize before measuring
+      const timer = setTimeout(() => {
+        // Horizontal scroll driven by the track's actual width
+        const horizTween = gsap.to(track, {
+          x: () => {
+            const scrollDistance = track.scrollWidth - container.clientWidth;
+            return -scrollDistance;
+          },
+          ease: "none",
+          scrollTrigger: {
+            trigger: container,
+            start: "top top",
+            end: () => {
+              const scrollDistance = track.scrollWidth - container.clientWidth;
+              return "+=" + Math.max(100, scrollDistance);
+            },
+            scrub: 1,
+            pin: true,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+            onRefresh: () => {
+              // Force recalculation on refresh
+            },
+          },
+        });
+
+        window.addEventListener("resize", refresh);
+
+        return () => {
+          window.removeEventListener("resize", refresh);
+          horizTween.scrollTrigger?.kill();
+          horizTween.kill();
+        };
+      }, 100);
+
+      return () => clearTimeout(timer);
     }, container);
 
     return () => ctx.revert();
