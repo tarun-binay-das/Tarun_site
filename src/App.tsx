@@ -1,7 +1,5 @@
 import Navbar from "./components/Navbar";
 import BackgroundRipple from "./components/BackgroundRipple";
-
-import Hero from "./components/sections/Hero";
 import ResponsiveHero from "./components/sections/ResponsiveHero";
 import About from "./components/sections/About";
 import Quote from "./components/sections/Quote";
@@ -43,7 +41,7 @@ export default function App() {
       </section>
 
       {/* === Rest of the site === */}
-      <section id="about" className="relative z-10 bg-[#050505]">
+      <section id="about" className="relative z-10">
         <About />
       </section>
 

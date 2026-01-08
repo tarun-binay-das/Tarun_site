@@ -29,9 +29,9 @@ export default function Hero() {
     >
       {/* === Background boxes behind the name === */}
       <div className="absolute left-[12%] top-10 -translate-y-1">
-        <div className="absolute top-[150px] left-[70px] w-[750px] h-[400px] bg-[#1e1e1e]" />
-        <div className="absolute top-[20px] left-[150px] w-[440px] h-[230px] bg-[#2b2b2b]" />
-        <div className="absolute top-[-30px] left-[-100px] w-[260px] h-[400px] bg-[#3b3b3b]" />
+        <div className="absolute top-[170px] left-[200px] w-[750px] h-[400px] bg-[#1e1e1e]" />
+        <div className="absolute top-[20px] left-[250px] w-[440px] h-[230px] bg-[#2b2b2b]" />
+        <div className="absolute top-[-30px] left-[0px] w-[260px] h-[400px] bg-[#3b3b3b]" />
       </div>
 
       {/* === Main centered name === */}
@@ -63,35 +63,35 @@ export default function Hero() {
             duration: 0.8,
             ease: cubicBezier(0.25, 1, 0.5, 1),
           }}
-          className="absolute top-[140px] left-[350px] mt-[90px] space-y-3 font-mono text-[1.25rem] md:text-[1.9rem] tracking-widest"
+          className="absolute top-[130px] left-[450px] mt-[90px] space-y-3 font-mono text-[1.25rem] md:text-[1.9rem] tracking-widest"
         >
           <p className="text-gray-300">/ WEB DEVELOPER</p>
           <p className="text-gray-300">/ GRAPHIC DESIGNER</p>
           <p className="text-gray-300">/ WEB DESIGNER ( UI/UX )</p>
         </motion.div>
+      </motion.div>
 
-        {/* Contact info */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{
-            delay: 0.6,
-            duration: 0.8,
-            ease: cubicBezier(0.25, 1, 0.5, 1),
-          }}
-          className="absolute bottom-[-280%] left-[-10%] font-mono text-[1.2rem] md:text-[1.3rem] text-gray-300 leading-relaxed space-y-3 pointer-events-auto"
-        >
-          <div className="uppercase tracking-widest text-gray-400 text-[1.1rem] font-semibold">
-            available for collaboration
-          </div>
-          <ButtonArrow
-            className="text-white text-[1.35rem] md:text-[1.5rem] font-regular"
-            text="tarunbinaydas@gmail.com"
-            href="mailto:tarunbinaydas@gmail.com"
-            initialRotation={90}
-            hoverRotation={45}
-          />
-        </motion.div>
+      {/* Contact info */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{
+          delay: 0.6,
+          duration: 0.8,
+          ease: cubicBezier(0.25, 1, 0.5, 1),
+        }}
+        className="absolute bottom-[20%] md:bottom-[11.5%] left-[0%] font-mono text-[1.2rem] md:text-[1.3rem] text-gray-300 leading-relaxed space-y-3 pointer-events-auto"
+      >
+        <div className="uppercase tracking-widest text-gray-400 text-[1.1rem] font-semibold">
+          available for collaboration
+        </div>
+        <ButtonArrow
+          className="text-white text-[1.35rem] md:text-[1.5rem] font-regular"
+          text="tarunbinaydas@gmail.com"
+          href="mailto:tarunbinaydas@gmail.com"
+          initialRotation={90}
+          hoverRotation={45}
+        />
       </motion.div>
 
      
@@ -118,7 +118,7 @@ export default function Hero() {
           duration: 1,
           ease: cubicBezier(0.25, 1, 0.5, 1),
         }}
-        className="absolute right-[1%] bottom-[4%] text-gray-400 font-mono text-right pointer-events-auto"
+        className="absolute right-[1%] bottom-[20%] md:bottom-[11.5%] text-gray-400 font-mono text-right pointer-events-auto"
       >
         <p className="absolute right-[0%] top-[-34px] uppercase tracking-widest mb-2 text-gray-400 text-[1.1rem] font-semibold">
           recent works

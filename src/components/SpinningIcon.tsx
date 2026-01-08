@@ -1,4 +1,4 @@
-import React from "react";
+
 import Icon from "../assets/spinning vector_hero.svg"; // adjust name if different
 
 export default function SpinningIcon() {
