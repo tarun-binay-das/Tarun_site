@@ -36,12 +36,12 @@ export default function App() {
       <Navbar />
 
       {/* Hero starts normally below navbar */}
-      <section id="hero" className="relative z-10 pt-24 pointer-events-none">
+      <section id="hero" className="relative z-10 pt-20 pointer-events-none min-h-screen">
         <ResponsiveHero />
       </section>
 
       {/* === Rest of the site === */}
-      <section id="about" className="relative z-10">
+      <section id="about" className="relative z-10 -translate-y-[460px]">
         <About />
       </section>
 

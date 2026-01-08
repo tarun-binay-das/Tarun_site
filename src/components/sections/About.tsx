@@ -123,17 +123,17 @@ export default function About() {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative w-full h-[100svh] overflow-hidden bg-[#F2F2F2] text-[#111]">
+    <div ref={containerRef} className="relative w-full h-screen overflow-hidden bg-[#F2F2F2] text-[#111]">
       {/* Horizontal track with full-screen panels */}
-      <div ref={trackRef} className="about-h-wrap flex h-full will-change-transform">
+      <div ref={trackRef} className="about-h-wrap flex h-screen will-change-transform">
         {/* Panel 1 - ABOUT ME layout */}
-        <section className="about-panel relative w-screen h-full flex items-center px-8 md:px-20">
-          <div className="relative grid grid-cols-12 gap-6 w-full h-full items-center">
+        <section className="about-panel relative w-[120vw] h-screen flex items-center justify-center px-0">
+          <div className="relative grid grid-cols-12 gap-6 w-full h-full items-center px-8 md:px-20">
             <div className="col-span-12 md:col-span-6">
-              <h2 className="reveal text-[3rem] md:text-[6rem] font-extrabold tracking-tight leading-none text-[#111]">
+              <h2 className="reveal text-[5rem] md:text-[8rem] font-extrabold tracking-tight leading-none text-[#111]">
                 ABOUT ME
               </h2>
-              <div className="mt-6 max-w-xl text-[#333] font-mono uppercase tracking-widest text-[0.9rem]">
+              <div className="mt-8 max-w-2xl text-[#333] font-mono uppercase tracking-widest text-[1.1rem] md:text-[1.3rem] leading-relaxed">
                 I’M <span className="font-bold">TARUN BINAY DAS</span>, A CSE UNDERGRAD WHO LOVES TO
                 BUILD, DESIGN, AND EXPERIMENT.
               </div>
@@ -155,11 +155,11 @@ export default function About() {
         </section>
 
         {/* Panel 2 - IT STARTED WITH...ART */}
-        <section className="about-panel relative w-screen h-full flex items-center px-8 md:px-20">
-          <div className="relative grid grid-cols-12 gap-6 w-full h-full items-center">
+        <section className="about-panel relative w-[120vw] h-screen flex items-center justify-center px-0">
+          <div className="relative grid grid-cols-12 gap-6 w-full h-full items-center px-8 md:px-20">
             <div className="col-span-12">
-              <h3 className="reveal text-[2.2rem] md:text-[5rem] font-extrabold tracking-tight text-center">
-                <span className="text-[#111]">IT STARTED WITH...</span> <span className="text-[#111]">ART</span>
+              <h3 className="reveal text-[4rem] md:text-[7rem] font-extrabold tracking-tight text-center">
+                <span className="text-[#111]">IT STARTED WITH...</span><br /><span className="text-[#111]">ART</span>
               </h3>
             </div>
 
@@ -199,36 +199,36 @@ export default function About() {
         </section>
 
         {/* Panel 3 - DIGITAL ART / 3D MODELING */}
-        <section className="about-panel relative w-screen h-full flex items-center px-8 md:px-20">
-          <div className="relative grid grid-cols-12 gap-6 w-full h-full items-center">
+        <section className="about-panel relative w-[120vw] h-screen flex items-center justify-center px-0">
+          <div className="relative grid grid-cols-12 gap-6 w-full h-full items-center px-8 md:px-20">
             <div className="col-span-12 md:col-span-7">
               <div className="relative inline-block">
-                <h3 className="reveal text-[2.2rem] md:text-[5rem] font-extrabold tracking-tight text-[#111]">
+                <h3 className="reveal text-[4rem] md:text-[7rem] font-extrabold tracking-tight text-[#111]">
                   DIGITAL ART
                 </h3>
-                <div className="sticker absolute -right-10 -top-6 rotate-6 px-3 py-1 rounded bg-black/10 border border-black/20 font-bold">
+                <div className="sticker absolute -right-10 -top-6 rotate-6 px-4 py-2 rounded text-lg md:text-2xl bg-black/10 border border-black/20 font-bold">
                   3D MODELING
                 </div>
               </div>
-              <p className="reveal mt-6 text-[#333] text-sm md:text-base max-w-xl">
+              <p className="reveal mt-8 text-[#333] text-lg md:text-2xl max-w-3xl leading-relaxed">
                 FROM SKETCHBOOKS TO SCREENS — I STARTED CREATING DIGITALLY. 3D TOOLS, LAYERS, LIGHTS,
                 AND SHADOWS BECAME MY NEW PLAYGROUND.
               </p>
 
-              <div className="mt-8 flex gap-6">
-                <div className="scale w-48 h-32 rounded-md bg-black/10 border border-black/20" />
-                <div className="float w-24 h-24 rounded-md bg-black/10 border border-black/20" />
+              <div className="mt-12 flex gap-8">
+                <div className="scale w-64 h-48 rounded-md bg-black/10 border border-black/20" />
+                <div className="float w-48 h-48 rounded-md bg-black/10 border border-black/20" />
               </div>
             </div>
 
             {/* Right: big abstract shape */}
             <div className="col-span-12 md:col-span-5 relative">
-              <div className="absolute right-6 bottom-12 w-56 h-56 rounded-full bg-black/10 border border-black/20" />
-              <div className="absolute right-0 bottom-0 w-72 h-40 rounded-t-[3rem] bg-black/10 border border-black/20" />
-              <div className="absolute right-20 top-16 px-3 py-1 rounded-full border border-black/30 text-xs tracking-widest sticker">
+              <div className="absolute right-6 bottom-12 w-80 h-80 rounded-full bg-black/10 border border-black/20" />
+              <div className="absolute right-0 bottom-0 w-96 h-56 rounded-t-[3rem] bg-black/10 border border-black/20" />
+              <div className="absolute right-20 top-16 px-4 py-2 rounded-full border border-black/30 text-base md:text-lg tracking-widest sticker font-bold">
                 ART
               </div>
-              <div className="absolute right-6 top-4 px-4 py-2 rounded-full bg-black/10 border border-black/20 font-bold tracking-wider sticker">
+              <div className="absolute right-6 top-4 px-6 py-3 rounded-full bg-black/10 border border-black/20 font-bold tracking-wider text-lg sticker">
                 BLENDER
               </div>
             </div>
@@ -236,18 +236,18 @@ export default function About() {
         </section>
 
         {/* Panel 4 - Values */}
-        <section className="about-panel w-screen h-full flex items-center px-8 md:px-20">
-          <div className="max-w-4xl">
-            <h3 className="reveal text-4xl md:text-6xl font-bold mb-6">Values</h3>
-            <p className="reveal text-gray-300 text-lg md:text-xl max-w-2xl">
+        <section className="about-panel w-[120vw] h-screen flex items-center justify-center px-0">
+          <div className="max-w-5xl px-8 md:px-20">
+            <h3 className="reveal text-6xl md:text-8xl font-bold mb-8">Values</h3>
+            <p className="reveal text-gray-300 text-2xl md:text-4xl max-w-3xl leading-relaxed">
               Clarity. Empathy. Performance. Great experiences emerge where storytelling
               meets engineering—shaped with purpose and polish.
             </p>
-            <div className="mt-10 grid grid-cols-3 gap-4 max-w-md">
+            <div className="mt-16 grid grid-cols-3 gap-6 max-w-2xl">
               {Array.from({ length: 6 }).map((_, idx) => (
                 <div
                   key={idx}
-                  className="scale h-16 rounded-md bg-white/5 border border-white/10"
+                  className="scale h-32 rounded-md bg-white/5 border border-white/10"
                 />
               ))}
             </div>
@@ -255,19 +255,19 @@ export default function About() {
         </section>
 
         {/* Panel 5 - CTA */}
-        <section className="about-panel w-screen h-full flex items-center px-8 md:px-20">
-          <div className="max-w-4xl">
-            <h3 className="reveal text-4xl md:text-6xl font-bold mb-6">Let’s Build</h3>
-            <p className="reveal text-gray-300 text-lg md:text-xl max-w-2xl">
-              Have a project or idea in mind? I’d love to collaborate
+        <section className="about-panel w-[120vw] h-screen flex items-center justify-center px-0">
+          <div className="max-w-5xl px-8 md:px-20">
+            <h3 className="reveal text-6xl md:text-8xl font-bold mb-8">Let's Build</h3>
+            <p className="reveal text-gray-300 text-2xl md:text-4xl max-w-3xl leading-relaxed">
+              Have a project or idea in mind? I'd love to collaborate
               and turn it into something memorable.
             </p>
             <a
               href="#contact"
-              className="reveal mt-10 inline-flex items-center gap-3 px-5 py-3 rounded-md bg-white/10 border border-white/20 hover:bg-white/15 transition-colors"
+              className="reveal mt-16 inline-flex items-center gap-4 px-8 py-4 rounded-md bg-white/10 border border-white/20 hover:bg-white/15 transition-colors text-lg md:text-2xl"
             >
               Get in touch
-              <span className="float w-2 h-2 rounded-full bg-white/80" />
+              <span className="float w-3 h-3 rounded-full bg-white/80" />
             </a>
           </div>
         </section>

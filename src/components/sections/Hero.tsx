@@ -99,7 +99,7 @@ export default function Hero() {
       {/* === Spinning SVG === */}
       <motion.div
         style={{ rotate }}
-        className="absolute right-[30%] bottom-[20%] w-[200px] h-[200px] opacity-100"
+        className="absolute right-[20%] bottom-[25%] w-[200px] h-[200px] opacity-100"
       >
         <SpinningIcon />
       </motion.div>
